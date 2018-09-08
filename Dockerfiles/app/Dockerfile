@@ -30,4 +30,11 @@ RUN ln -s /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabl
 
 COPY entrypoint.sh /var/www/entrypoint/entrypoint.sh
 
+#NodeJS
+RUN curl -sL https://deb.nodesource.com/setup_9.x -o nodesource_setup.sh
+RUN apt-get install -y gnupg
+RUN bash nodesource_setup.sh
+RUN apt-get install -y nodejs
+RUN npm i -g npm
+
 RUN ["chmod", "+x", "/var/www/entrypoint/entrypoint.sh"]
