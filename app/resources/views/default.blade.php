@@ -45,6 +45,8 @@
         <script type="text/javascript" src="/js/sweetalert/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/js/sweetalert/dist/sweetalert.css">
 
+        @yield('scripts')
+
     </head>
     <body class="fix-header card-no-border">
     <div class="preloader">
@@ -109,9 +111,6 @@
             <div class="container-fluid">
                 @yield('content')
             </div>
-            <footer class="footer text-center">
-                © 2017 Monster Admin by wrappixel.com
-            </footer>
         </div>
     </div>
     </body>

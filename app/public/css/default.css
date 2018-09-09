@@ -21,3 +21,24 @@
 .card-no-border .left-sidebar {
     box-shadow: none;
 }
+
+/**/
+
+.dt-buttons .dt-button {
+    padding: 6px 15px 3px 15px;
+    border-radius: 2px;
+    background: #e75d60;
+    color: #ffffff;
+    margin-right: 3px;
+    border: none;
+}
+
+button.dt-button:hover:not(.disabled), div.dt-button:hover:not(.disabled), a.dt-button:hover:not(.disabled) {
+    background: #8b4144 !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+table.dataTable tbody tr.selected {
+    background-color: #b162d91f !important;
+}

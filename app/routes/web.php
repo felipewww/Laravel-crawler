@@ -29,5 +29,8 @@ Route::post('/login', 'LoginController@login');
 Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function (){
     Route::get('', 'CatchController@index');
     Route::get('catch', 'CatchController@index');
-    Route::get('articles', 'CatchController@index');
+
+    Route::get('articles', 'ArticlesController@index');
+    Route::post('articles/list', 'ArticlesController@list');
+    Route::post('articles/deleteSelecteds', 'ArticlesController@deleteSelecteds');
 });
