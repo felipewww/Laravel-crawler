@@ -12,6 +12,12 @@ class ArticlesController extends Controller
         return view('articles');
     }
 
+    /**
+     * Datatbales list
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function list(Request $request)
     {
         $start = $request->post('start');
@@ -28,9 +34,13 @@ class ArticlesController extends Controller
         return response($response);
     }
 
+    /**
+     * Delete multiple selected from datatables
+     * @param Request $request
+     */
     public function deleteSelecteds(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'articles' => 'array',
         ]);
 
@@ -41,8 +51,5 @@ class ArticlesController extends Controller
         }
 
         Article::deleteIn($sentIds);
-
-        dd($validatedData);
-        dd($request->all());
     }
 }

@@ -7,9 +7,6 @@ function Screen() {
     {
         self.setFormSubmit();
 
-        console.log("construct")
-        console.log(this.formData);
-
         return self;
     };
 
@@ -28,7 +25,7 @@ function Screen() {
                 data: formData,
                 dataType: 'json',
                 success: function (data) {
-                    window.location.href = '/admin/catch';
+                    window.location.href = '/admin';
                 },
                 error: function (error) {
                     error = error.responseJSON;
@@ -40,7 +37,6 @@ function Screen() {
 
     this.getFormData = function ()
     {
-        // this.formData._token = this.form[0].value;
         this.formData.username = this.form[0].value;
         this.formData.password = this.form[1].value;
 

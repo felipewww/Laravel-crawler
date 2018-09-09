@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-//use DOMDocument;
 use App\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -15,6 +14,12 @@ class CatchController extends Controller
         return view('catch');
     }
 
+    /**
+     * Get HTML content from blog.uplexis, insert "article" tags on array and return to the frontend
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function find(Request $request)
     {
         $contents = file_get_contents("http://blog.uplexis.com.br/?s=".$request->post('search'));
@@ -34,6 +39,11 @@ class CatchController extends Controller
         return response(['articles' => $found]);
     }
 
+    /**
+     * Detach node "article" found to be stored in array, that will be treated on front-end
+     * @param $e
+     * @return string
+     */
     private function outerHTML($e) {
         $doc = new \DOMDocument();
         $doc->appendChild($doc->importNode($e, true));
@@ -41,6 +51,12 @@ class CatchController extends Controller
         return $doc->saveHTML();
     }
 
+    /**
+     * Store at database articles found on cURL request
+     * @see find
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function importFoundArticles(Request $request)
     {
         $data = [];
@@ -53,10 +69,9 @@ class CatchController extends Controller
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
         }
-//        dd($request->post('articles'));
+
         Article::insert($data);
 
         return response(['ok']);
-//        dd($request->all());
     }
 }

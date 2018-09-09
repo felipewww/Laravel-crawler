@@ -26,7 +26,7 @@ Route::get('/logout', 'LoginController@logout');
 Route::post('/login', 'LoginController@login');
 
 Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function (){
-    Route::get('', 'CatchController@index');
+    Route::get('', 'HomeController@index');
 
     Route::group(['prefix' => 'catch'], function(){
         Route::get('', 'CatchController@index');
