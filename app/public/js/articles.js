@@ -31,6 +31,9 @@ function Articles() {
                 {
                     text: 'Deletar selecionados',
                     action: function () {
+
+                        mainScript.loadingModal.show();
+
                         // var count = table.rows( { selected: true } ).count();
                         let selectedIdxs = table.rows({ selected: true })[0];
                         let data = table.ajax.json().data;
@@ -40,7 +43,7 @@ function Articles() {
 
                             for(let idx in selectedIdxs){
                                let position = selectedIdxs[idx];
-                               arr.push(data[position]);
+                               arr.push(data[position].id);
                             }
 
                             return arr;
@@ -51,10 +54,14 @@ function Articles() {
                             method: 'post',
                             data: { articles: selectedData },
                             success: function () {
-
+                                window.location.reload();
                             },
                             error: function (err) {
-
+                                let error = err.responseJSON;
+                                mainScript.swal.error(error.message);
+                            },
+                            complete: function () {
+                                mainScript.loadingModal.hide();
                             }
                         })
                     }

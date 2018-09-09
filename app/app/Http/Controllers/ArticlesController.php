@@ -30,6 +30,19 @@ class ArticlesController extends Controller
 
     public function deleteSelecteds(Request $request)
     {
+        $validatedData = $request->validate([
+            'articles' => 'array',
+        ]);
+
+        $sentIds = $request->post('articles');
+
+        if ( empty($sentIds) ) {
+            abort(500, 'No articles selected.');
+        }
+
+        Article::deleteIn($sentIds);
+
+        dd($validatedData);
         dd($request->all());
     }
 }

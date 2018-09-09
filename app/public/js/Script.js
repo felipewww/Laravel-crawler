@@ -2,6 +2,7 @@ let mainScript;
 
 function MainScript()
 {
+    let parent = this;
     this.constructor = function ()
     {
         let csrfToken = $('meta[name="csrf_token"]')[0].getAttribute('content');
@@ -29,6 +30,27 @@ function MainScript()
                 text: msg,
                 icon: "error",
             });
+        }
+    };
+
+    this.loadingModal = {
+        modal: null,
+
+        show: function ()
+        {
+            parent.loadingModal.modal = $('body').loadingModal({
+                position: 'auto',
+                text: '',
+                color: '#fff',
+                opacity: '0.7',
+                backgroundColor: 'rgb(0,0,0)',
+                animation: 'doubleBounce'
+            })
+        },
+
+        hide: function ()
+        {
+            $('body').loadingModal('hide');
         }
     };
 
