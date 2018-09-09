@@ -1,0 +1,20 @@
+.found-article {
+    padding: 15px;
+    border: 1px solid #eaeaea;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.found-article-summary {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.found-article-link {
+    font-size: 10px;
+    color: #e85d5f;
+}
+.found-article-title {
+    font-weight: bold;
+    font-size: 14px;
+}

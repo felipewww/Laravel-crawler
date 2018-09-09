@@ -42,3 +42,7 @@ button.dt-button:hover:not(.disabled), div.dt-button:hover:not(.disabled), a.dt-
 table.dataTable tbody tr.selected {
     background-color: #b162d91f !important;
 }
+
+td {
+    font-size: 12px;
+}

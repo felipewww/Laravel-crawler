@@ -21,14 +21,28 @@ function MainScript()
             let msg = '';
             for(let idx in errors){
                 if (errors.hasOwnProperty(idx)){
-                    msg += errors[idx] + "<br>";
+                    msg += errors[idx];
                 }
+            }
+
+            if (message === '') {
+                message = 'Something went wrong.'
             }
 
             swal({
                 title: message,
                 text: msg,
-                icon: "error",
+                type: "error",
+            });
+        },
+
+        success: function (title, msg)
+        {
+            swal({
+                title: title,
+                text: msg,
+                icon: "success",
+                type: "success",
             });
         }
     };
@@ -42,7 +56,7 @@ function MainScript()
                 position: 'auto',
                 text: '',
                 color: '#fff',
-                opacity: '0.7',
+                opacity: '0.4',
                 backgroundColor: 'rgb(0,0,0)',
                 animation: 'doubleBounce'
             })
@@ -50,7 +64,9 @@ function MainScript()
 
         hide: function ()
         {
-            $('body').loadingModal('hide');
+            let $body = $('body');
+            $body.loadingModal('hide');
+            $body.loadingModal('destroy');
         }
     };
 

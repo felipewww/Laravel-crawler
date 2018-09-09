@@ -23,14 +23,20 @@ Route::get('/', function (){
 
 Route::get('/login', 'LoginController@index');
 Route::get('/logout', 'LoginController@logout');
-
 Route::post('/login', 'LoginController@login');
 
 Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function (){
     Route::get('', 'CatchController@index');
-    Route::get('catch', 'CatchController@index');
 
-    Route::get('articles', 'ArticlesController@index');
-    Route::post('articles/list', 'ArticlesController@list');
-    Route::post('articles/deleteSelecteds', 'ArticlesController@deleteSelecteds');
+    Route::group(['prefix' => 'catch'], function(){
+        Route::get('', 'CatchController@index');
+        Route::post('find', 'CatchController@find');
+        Route::post('importFoundArticles', 'CatchController@importFoundArticles');
+    });
+
+    Route::group(['prefix' => 'articles'], function(){
+        Route::get('', 'ArticlesController@index');
+        Route::post('list', 'ArticlesController@list');
+        Route::post('deleteSelecteds', 'ArticlesController@deleteSelecteds');
+    });
 });
