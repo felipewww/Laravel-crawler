@@ -238,3 +238,28 @@ body .login_fields__submit input:hover {
 .brand img {
     width: 30px;
 }
+
+/**/
+.btn-primary, .btn-primary.disabled {
+    background: #7460ee;
+    border: 1px solid #7460ee;
+}
+.btn-lg {
+    padding: .75rem 1.5rem;
+    font-size: 1.25rem;
+}
+.btn {
+    padding: 7px 12px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: .75rem 1.5rem;
+    font-size: 1.25rem;
+    border-radius: .3rem;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #0275d8;
+    border-color: #0275d8;
+}

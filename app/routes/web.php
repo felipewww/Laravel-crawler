@@ -13,8 +13,21 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/login', function () {
-    return view('login');
+Route::get('/', function (){
+    if (\Illuminate\Support\Facades\Auth::user()) {
+        return redirect('/admin/catch');
+    } else {
+        return redirect('/login');
+    }
 });
 
-Route::get('/catch', 'CatchController@index');
+Route::get('/login', 'LoginController@index');
+Route::get('/logout', 'LoginController@logout');
+
+Route::post('/login', 'LoginController@login');
+
+Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function (){
+    Route::get('', 'CatchController@index');
+    Route::get('catch', 'CatchController@index');
+    Route::get('articles', 'CatchController@index');
+});
